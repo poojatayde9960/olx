@@ -4,5 +4,6 @@ router
     .post("/register-admin", authController.registerAdmin)
     .post("/login-admin", authController.loginAdmin)
     .post("/verify-admin-otp", authController.VerifyOTP)
+    .post("/logout-admin", authController.logoutAdmin)
 
 module.exports = router
