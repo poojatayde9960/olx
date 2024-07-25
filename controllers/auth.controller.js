@@ -137,7 +137,7 @@ exports.logoutUser = asyncHandler(async (req, res) => {
 // register User
 exports.registerUser = asyncHandler(async (req, res) => {
     const { name, mobile, email, password, cpassword } = req.body
-    const { } = checkEmpty({
+    const { isError, error } = checkEmpty({
         name, mobile, email, password, cpassword
     })
     if (isError) {
