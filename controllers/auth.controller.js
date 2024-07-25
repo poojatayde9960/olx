@@ -145,12 +145,12 @@ exports.registerUser = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: "All Fields Required", error })
     }
     if (!validator.isEmail(email)) {
-        return res.json({ message: "invalid email" })
+        return res.status(400).json({ message: "invalid email" })
     }
-    if (!validator.isMobilePhone(mobile, "en-IN")) { return res.json({ message: "invalid mobile" }) }
-    if (!validator.isStrongPassword(password)) { return res.json({ message: "provide strong password " }) }
-    if (!validator.isStrongPassword(cpassword)) { return res.json({ message: "provid strong comgirm email" }) }
-    if (password !== cpassword) { return res.json({ message: "password do not match" }) }
+    if (!validator.isMobilePhone(mobile, "en-IN")) { return res.status(400).json({ message: "invalid mobile" }) }
+    if (!validator.isStrongPassword(password)) { return res.status(400).json({ message: "provide strong password " }) }
+    if (!validator.isStrongPassword(cpassword)) { return res.status(400).json({ message: "provid strong comgirm email" }) }
+    if (password !== cpassword) { return res.status(400).json({ message: "password do not match" }) }
 
     const hash = await bcrypt.hash(password, 10)
     const x = await User.create({ name, mobile, email, password: hash })
