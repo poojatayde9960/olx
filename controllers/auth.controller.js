@@ -121,7 +121,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
         return res.status(401).json({ message: "email not found" })
     }
 
-    const token = jwt.sign({ userId: result._id }, process.env.JWT_KEY, { maxAge: "180d" })
+    const token = jwt.sign({ userId: result._id }, process.env.JWT_KEY, { expiresIn: "180d" })
     res.cookie("user", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
