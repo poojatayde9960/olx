@@ -18,6 +18,7 @@ exports.verifyUserEmail = asyncHandler(async (req, res) => {
     res.json({ message: "verification Send Success" })
 })
 exports.verifyEmailOTP = asyncHandler(async (req, res) => {
+    const { otp } = req.body
     const result = await User.findById(req.loggedInUser)
     if (!result) {
         return res.status(401).json({ message: "You are not logged In . Please Login Again" })
