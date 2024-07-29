@@ -133,6 +133,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
             _id: result._id,
             name: result.name,
             avatar: result.avatar,
+            mobile: result.mobile,
             verified: result.verified,
             mobileVerified: result.mobileVerified,
             emailVerified: result.emailVerified,
