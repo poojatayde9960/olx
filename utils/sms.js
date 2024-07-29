@@ -4,7 +4,7 @@ exports.sendSMS = ({ message = "", numbers = "" }) => new Promise((resolve, reje
     var req = unirest("POST", "https://www.fast2sms.com/dev/bulkV2");
 
     req.headers({
-        "authorization": "YOUR_API_KEY"
+        "authorization": process.env.SMS_API_KEY
     });
 
     req.form({
