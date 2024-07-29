@@ -132,10 +132,10 @@ exports.loginUser = asyncHandler(async (req, res) => {
         message: "user register Success", result: {
             _id: result._id,
             name: result.name,
-            email: result.email,
-            mobile: result.mobile,
             avatar: result.avatar,
             verified: result.verified,
+            mobileVerified: result.mobileVerified,
+            emailVerified: result.emailVerified,
         }
     })
 })
