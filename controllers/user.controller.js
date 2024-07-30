@@ -8,7 +8,7 @@ exports.verifyUserEmail = asyncHandler(async (req, res) => {
     if (!result) {
         return res.status(401).json({ message: "You are not logged In . Please Login Again" })
     }
-    const otp = Math.floor(10000 + Math.random() * 900000)                      //otp return return change honya sathi
+    const otp = Math.floor(10000 + Math.random() * 900000)                //otp return return change honya sathi
     await User.findByIdAndUpdate(req.loggedInUser, { emailCode: otp })   // ya line ni otp database mdhe jato
     sendEmail({
         to: result.email,
