@@ -74,11 +74,11 @@ exports.verifyMobileOTP = asyncHandler(async (req, res) => {
     })
 })
 exports.addPost = asyncHandler(async (req, res) => {
-    const { title, desc, price, images, location } = req.body
-    const { error, isError } = checkEmpty({ title, desc, price, images, location })
+    const { title, desc, price, images, location, category } = req.body
+    const { error, isError } = checkEmpty({ title, desc, price, images, location, category })
     if (isError) {
         return res.status(400).json({ message: "all fields Required", error })
     }
-    await Post.create({ title, desc, price, images, location, user: req.loggedInUser })
+    await Post.create({ title, desc, price, images, location, category, user: req.loggedInUser })
     res.json({ message: "post creat success" })
 })
